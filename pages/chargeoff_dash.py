@@ -40,6 +40,6 @@ c = st.columns([9,1])
 back = c[0].button('Back')
 next = c[1].button('Next')
 if back:
-    switch_page('input_dashboard')
+    switch_page('sales_dash')
 # if next:
     # switch_page()

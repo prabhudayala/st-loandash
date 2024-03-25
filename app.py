@@ -1,9 +1,8 @@
 import streamlit as st
+from streamlit_extras.switch_page_button import switch_page
+import time
 
 def main():
-    """Styled Streamlit login page"""
-    
-    # Set page title with CSS styling
     st.markdown("""
         <style>
             .title {
@@ -28,18 +27,17 @@ def main():
     """, unsafe_allow_html=True)
     
     st.markdown("<h1 class='title'>Login</h1>", unsafe_allow_html=True)
-    
-    # Create input fields for username and password
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     col1, col2, col3, col4 = st.columns(4)
-    # Create a styled login button
     with col1:
         login_btn = st.button("Login", key="login-btn", type="primary", use_container_width=True)
     if login_btn:
         if username  and password :
             st.success("Logged in as: {}".format(username))
-        # Redirect to the dashboard or another page
+            time.sleep(2)
+            switch_page('file_upload')
+
         else:
             st.error("Please input valid username and password")
 

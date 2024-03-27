@@ -7,6 +7,7 @@ st.set_page_config(layout='wide')
 
 st.title('Collection Model Scoring')
 data = pd.read_excel('CollectionAI_SampleData_v1.xlsx')
+st.session_state['result_data'] = data
 data = data.drop('Proposed Strategy', axis=1)
 
 def make_clickable(url, text):
@@ -15,6 +16,11 @@ def make_clickable(url, text):
 
 data['Link'] = data['Segment'].apply(lambda x: make_clickable(f'/segments', x))
 
-
+c = st.columns([9,1]) 
 st.markdown(data.to_html(escape=False, render_links=True), unsafe_allow_html=True)
-# st.dataframe(data, use_container_width=True)
+back = c[0].button('Back')
+next = c[1].button('Next')
+if back:
+    switch_page('chargeoff_dash')
+if next:
+    switch_page('collection_results')

@@ -6,7 +6,7 @@ def main():
     st.markdown("""
         <style>
             .title {
-                color: #820263;
+                color: #E75A7C;
                 text-align: center;
                 font-size: 2.5em;
                 margin-bottom: 1em;

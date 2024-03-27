@@ -11,10 +11,13 @@ st.title('Dashboard - Sales')
 data = st.session_state['data']
 data['Primary Loan Orig Amount Financed'] = data['Primary Loan Orig Amount Financed'].astype(float)
 
-data['Year'] = pd.to_datetime(data['Primary Loan Contract Date']).dt.year
+data['Year'] = pd.to_datetime(data['Primary Loan Contract Date']).dt.year.astype(str)
 data['Month'] = pd.to_datetime(data['Primary Loan Contract Date']).dt.month_name()
 
+month_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+data['Month'] = pd.Categorical(data['Month'], categories=month_order, ordered=True)
 sales_by_year_month = data.groupby(['Year', 'Month'])['Primary Loan Orig Amount Financed'].sum().reset_index()
+
 fig1 = px.bar(sales_by_year_month, x='Month', y='Primary Loan Orig Amount Financed', color='Year', title='Sales by Year and Month')
 
 

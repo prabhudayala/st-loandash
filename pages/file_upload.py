@@ -9,8 +9,7 @@ next = st.button('Next')
 if next:
     if uploaded_file:
         df = pd.read_excel(uploaded_file, sheet_name='data summary')
-
-        st.dataframe(df)
-        st.table(df)
         st.session_state['data'] = df
-        switch_page('input_dashboard')
+        switch_page('sales_dash')
+    else:
+        st.error("Please Upload the Data")

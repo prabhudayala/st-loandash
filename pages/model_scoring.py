@@ -23,4 +23,4 @@ next = c[1].button('Next')
 if back:
     switch_page('chargeoff_dash')
 if next:
-    switch_page('collection_results')
+    switch_page('model_framework')

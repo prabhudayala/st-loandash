@@ -10,6 +10,7 @@ data = pd.read_excel("Python_app.xlsx", sheet_name='accounts', skiprows=1)
 data.drop("Unnamed: 0", axis=1, inplace=True)
 data = data[data['LoanNum'].notna()]
 data['LoanNum'] = data['LoanNum'].astype(int)
+data.fillna("NA", inplace=True)
 sidebar = st.sidebar
 loan = sidebar.selectbox("Loan Number",data['LoanNum'].unique())
 if sidebar.button("Submit"):
@@ -24,6 +25,6 @@ c = st.columns([9,1])
 back = c[0].button('Back')
 next = c[1].button('Next')
 if back:
-    switch_page('model_scoring')
+    switch_page('data_overview')
 if next:
     switch_page('champ_challenger')
